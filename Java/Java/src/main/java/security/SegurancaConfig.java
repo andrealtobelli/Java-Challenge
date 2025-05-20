@@ -26,17 +26,17 @@ public class SegurancaConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
+            .headers(headers -> headers.frameOptions(frame -> frame.disable())) // Permite uso do H2 Console
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
                     "/filiais/login",
                     "/filiais/cadastrar",
-                    "/swagger-ui/",
-                    "/v3/api-docs/",
+                    "/swagger-ui/**",
+                    "/v3/api-docs/**",
                     "/h2-console/**"
                 ).permitAll()
                 .anyRequest().authenticated()
             )
-            .headers(headers -> headers.frameOptions(frame -> frame.disable()))
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 

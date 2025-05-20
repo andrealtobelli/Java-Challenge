@@ -5,8 +5,6 @@ import org.springframework.hateoas.RepresentationModel;
 import com.trackzone.Java.model.Moto;
 import com.trackzone.Java.model.StatusMoto;
 
-import br.com.fiap.projeto_musica.model.Artista;
-
 public class MotoDTO extends RepresentationModel<MotoDTO> {
 
     private Long id;

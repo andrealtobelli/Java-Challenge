@@ -27,7 +27,7 @@ public class SegurancaConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
-            .headers(headers -> headers.frameOptions(frame -> frame.disable())) // Libera o uso de iframe (necessário pro H2 Console)
+            .headers(headers -> headers.frameOptions(frame -> frame.disable())) 
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
                     new AntPathRequestMatcher("/filiais/login"),
